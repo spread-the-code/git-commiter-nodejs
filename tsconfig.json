@@ -16,7 +16,6 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
-    "watch": true,
     "outDir": "dist",
     "rootDir": "."
   },
