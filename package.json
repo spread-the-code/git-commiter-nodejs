@@ -22,7 +22,7 @@
   },
   "scripts": {
     "debug": "tsc | nodemon dist/src/main.js --nolazy --debug-brk=5858",
-    "start": "tsc -w | nodemon dist/src/main.js",
+    "start": "tsc -w | jest --watch | nodemon dist/src/main.js",
     "clean": "rimraf coverage build tmp",
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",

@@ -3,7 +3,7 @@ import { execSync, spawnSync } from 'child_process';
 import * as express from 'express';
 import { join } from 'path';
 import{ directory } from 'tempy';
-import { writeFileDeep } from './utils';
+import { writeFileDeepSync } from './utils';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,7 +27,7 @@ app.post('/commit', (req, res) => {
   console.log(output[2]);
 
   (<IFile[]>files).forEach((file: IFile) => {
-    writeFileDeep(join(tempFolder, repoName, file.path), file.content);
+    writeFileDeepSync(join(tempFolder, repoName, file.path), file.content);
   });
 
   console.log('> git add')

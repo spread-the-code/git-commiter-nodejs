@@ -1,7 +1,7 @@
 import {appendFileSync, existsSync, mkdirSync} from 'fs';
 import * as path from 'path';
 
-export function writeFileDeep(fullPath: string, content: string) {
+export function writeFileDeepSync(fullPath: string, content: string) {
   ensureDirectoryExistence(fullPath);
 
   return appendFileSync(fullPath, content);
