@@ -35,6 +35,9 @@ app.post('/commit', (req, res) => {
   console.log('> git status')
   spawnSync('git', ['status'], {...options(),  stdio:'inherit'});
 
+  execSync('git config user.email "bot@spread-the-code.com"', options());
+  execSync('git config user.name "commit-bot"', options());
+
   console.log('> git commit')
   execSync(`git commit -m "commit now: ${n}"`, {...options(),  stdio:'inherit'});
 
