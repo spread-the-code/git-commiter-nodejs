@@ -2,9 +2,10 @@ A nodejs server that recieve files and commit them to github repo
 
 ## Installation
 
-Recommended way - `git clone` and deploy with ci system (such as
+Recommended way - `git clone` and deploy with ci system<br />
+(such as
 <a href="https://heroku.com" target="_blank">
-  <img style="height: 30px; vertical-align: middle" src="assets/heroku-logo.svg" alt="heroku" />
+  <img height="30" valign="middle" src="assets/heroku-logo.svg" alt="heroku" />
 </a>.
 Read the <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">guide</a>)
 
