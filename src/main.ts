@@ -1,9 +1,9 @@
 import * as bodyParser from 'body-parser';
 import { execSync, spawnSync } from 'child_process';
 import * as express from 'express';
-import { appendFileSync } from 'fs';
 import { join } from 'path';
 import{ directory } from 'tempy';
+import { writeFileDeep } from './utils';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.get('/', (_req, res) => res.send('Hello World!'))
 
 app.post('/commit', (req, res) => {
-  const { remoteRepo, token } = req.body as {[key: string]: string};
-  const [, repoName] = remoteRepo.split('/');
+  const { remoteRepo, token, files, commitMessage } = req.body as {[key: string]: string | IFile[]};
+  const [, repoName] = (<string>remoteRepo).split('/');
 
   const tempFolder = directory();
 
@@ -26,8 +26,9 @@ app.post('/commit', (req, res) => {
   const {output} = spawnSync('git', ['clone', `https://${token}@github.com/${remoteRepo}.git`], options(''));
   console.log(output[2]);
 
-  const n = Date.now();
-  appendFileSync(join(tempFolder, repoName, 'temp'), n);
+  (<IFile[]>files).forEach((file: IFile) => {
+    writeFileDeep(join(tempFolder, repoName, file.path), file.content);
+  });
 
   console.log('> git add')
   execSync('git add .', options());
@@ -39,7 +40,7 @@ app.post('/commit', (req, res) => {
   execSync('git config user.name "commit-bot"', options());
 
   console.log('> git commit')
-  execSync(`git commit -m "commit now: ${n}"`, {...options(),  stdio:'inherit'});
+  execSync(`git commit -m "${commitMessage || 'unknow commit'}"`, {...options(),  stdio:'inherit'});
 
   console.log('> git push');
   try {
@@ -52,3 +53,8 @@ app.post('/commit', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+interface IFile {
+  path: string;
+  content: string;
+}
