@@ -6,15 +6,14 @@ import { join } from 'path';
 import{ directory } from 'tempy';
 
 const app = express();
-const port = process.env.PORT || 3000;;
-const token = '2115bbb1c0fb3fbd9326d097d30430afbcfcf74b';
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
 app.get('/', (_req, res) => res.send('Hello World!'))
 
 app.post('/commit', (req, res) => {
-  const { remoteRepo } = req.body as {[key: string]: string};
+  const { remoteRepo, token } = req.body as {[key: string]: string};
   const [, repoName] = remoteRepo.split('/');
 
   const tempFolder = directory();
