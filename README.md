@@ -15,19 +15,19 @@ Read the <a href="https://devcenter.heroku.com/articles/github-integration" targ
 
 ```json
 {
-	"remoteRepo": "{owner}/{repository_name}",
-	"token": "{personal_access_token}",
-	"commitMessage": "{commit_message}",
-	"files": [
-		{
-			"path": "path/to/first-file.txt",
-			"content": "content of first-file.txt"
-		},
-		{
-			"path": "path/to/second-file.txt",
-			"content": "content of second-file.txt"
-		}
-	]
+  "remoteRepo": "{owner}/{repository_name}",
+  "token": "{personal_access_token}",
+  "commitMessage": "{commit_message}",
+  "files": [
+    {
+      "path": "path/to/first-file.txt",
+      "content": "content of first-file.txt"
+    },
+    {
+      "path": "path/to/second-file.txt",
+      "content": "content of second-file.txt"
+    }
+  ]
 }
 ```
 
