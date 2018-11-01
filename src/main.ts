@@ -6,7 +6,7 @@ import { join } from 'path';
 import{ directory } from 'tempy';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;;
 const token = '2115bbb1c0fb3fbd9326d097d30430afbcfcf74b';
 
 app.use(bodyParser.json());
