@@ -10,15 +10,16 @@
     "@types/express": "^4.16.0",
     "@types/jest": "~23.3.2",
     "@types/tempy": "^0.2.0",
+    "coveralls": "^3.0.2",
     "jest": "~23.6.0",
+    "nodemon": "^1.18.5",
     "prettier": "1.14.3",
     "rimraf": "~2.6.2",
     "ts-jest": "~23.10.2",
     "tslint": "~5.11.0",
     "tslint-config-prettier": "1.15.0",
     "tslint-microsoft-contrib": "~5.2.1",
-    "tsutils": "~3.0.0",
-    "nodemon": "^1.18.5"
+    "tsutils": "~3.0.0"
   },
   "scripts": {
     "debug": "tsc | nodemon dist/src/main.js --nolazy --debug-brk=5858",
@@ -28,7 +29,8 @@
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "tslint -t stylish --project \"tsconfig.json\"",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "license": "Apache-2.0",
   "dependencies": {

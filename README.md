@@ -1,3 +1,6 @@
+<img src="https://api.travis-ci.com/spread-the-code/git-commiter-nodejs.svg?branch=master" alt="build status" />
+<img src="https://coveralls.io/repos/github/spread-the-code/git-commiter-nodejs/badge.svg?branch=master" alt="coverage" />
+
 A nodejs server that recieve files and commit them to github repo
 
 ## Installation
