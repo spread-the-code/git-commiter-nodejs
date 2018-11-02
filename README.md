@@ -1,4 +1,4 @@
-<img src="https://api.travis-ci.com/spread-the-code/git-commiter-nodejs.svg?branch=master" alt="build status" /> <img src="https://coveralls.io/repos/github/spread-the-code/git-commiter-nodejs/badge.svg?branch=master" alt="coverage" />
+[![Build Status](https://travis-ci.com/spread-the-code/git-commiter-nodejs.svg?branch=master)](https://travis-ci.com/spread-the-code/git-commiter-nodejs) [![Coverage Status](https://coveralls.io/repos/github/spread-the-code/git-commiter-nodejs/badge.svg?branch=master)](https://coveralls.io/github/spread-the-code/git-commiter-nodejs?branch=master)
 
 A nodejs server that recieve files and commit them to github repo
 
