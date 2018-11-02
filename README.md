@@ -8,7 +8,7 @@ A nodejs server that recieve files and commit them to github repo
 
 1. `npm install`
 2. `npm start`
-3. `POST` the payload (below) to http//localhost:3000/commit
+3. `POST` the payload (below) to `http//localhost:3000/commit`
 
 ### Production
 Recommended way - `git clone` and deploy with a ci system<br />
