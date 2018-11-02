@@ -19,7 +19,8 @@
     "tslint": "~5.11.0",
     "tslint-config-prettier": "1.15.0",
     "tslint-microsoft-contrib": "~5.2.1",
-    "tsutils": "~3.0.0"
+    "tsutils": "~3.0.0",
+    "axios": "^0.18.0"
   },
   "scripts": {
     "debug": "tsc | nodemon dist/src/main.js --nolazy --debug-brk=5858",

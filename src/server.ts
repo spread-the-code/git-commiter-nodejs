@@ -1,14 +1,13 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
-import { readdirSync } from 'fs';
 import {Server} from 'http';
 import {join} from 'path';
 // tslint:disable-next-line:no-submodule-imports
 import * as simpleGit from 'simple-git/promise';
-import{directory} from 'tempy';
+import {directory} from 'tempy';
 import {writeFileDeepSync} from './utils';
 
-export function startServer(port = process.env.PORT || 3000): Server {
+export function startServer(port = process.env.PORT || 3000): Promise<Server> {
   const app = express();
 
   app.use(bodyParser.json());
@@ -18,10 +17,16 @@ export function startServer(port = process.env.PORT || 3000): Server {
   app.post('/commit', async (req, res) => {
     const { remoteRepo, token, files, commitMessage } = req.body as {[key: string]: string | IFile[]};
 
-    const tempFolder = directory();
+    if (!remoteRepo || !token || !files || !commitMessage) {
+      res.status(500).send(`Payload isn't complete`);
 
+      return;
+    }
+
+    const tempFolder = directory();
     const sg = simpleGit(tempFolder);
     await sg.clone(`https://${token}@github.com/${remoteRepo}.git`, tempFolder);
+
     (<IFile[]>files).forEach((file: IFile) => {
       writeFileDeepSync(join(tempFolder, file.path), file.content);
     });
@@ -30,13 +35,18 @@ export function startServer(port = process.env.PORT || 3000): Server {
     await sg.addConfig('user.email', 'bot@spread-the-code.com');
     await sg.addConfig('user.name', 'committer-bot');
 
-    await sg.commit(<string>commitMessage || 'unknow commit');
+    await sg.commit(<string>commitMessage);
     await sg.push();
 
     res.send('done');
   });
 
-  return app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+  return new Promise((resolve) => {
+    const server = app.listen(port, () => {
+      console.log(`Example app listening on port ${port}!`);
+      resolve(server);
+    });
+  })
 }
 
 interface IFile {

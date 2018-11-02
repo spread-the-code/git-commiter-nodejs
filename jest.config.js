@@ -12,7 +12,10 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(js)x?$',
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
+    'dist/src/**/*.{js,jsx}',
     '!src/**/*.d.ts',
   ],
+  moduleNameMapper: {
+    "simple-git/promise": "<rootDir>/__mocks__/simple-git/promise.js"
+  }
 };
