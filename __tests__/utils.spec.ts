@@ -1,5 +1,5 @@
 import {readFileSync} from 'fs';
-import { join } from 'path';
+import {join} from 'path';
 import {directory} from 'tempy';
 import {writeFileDeepSync} from '../src/utils';
 
