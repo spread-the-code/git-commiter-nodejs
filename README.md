@@ -4,7 +4,14 @@ A nodejs server that recieve files and commit them to github repo
 
 ## Installation
 
-Recommended way - `git clone` and deploy with ci system<br />
+### Local
+
+1. `npm install`
+2. `npm start`
+3. `POST` the payload (below) to http//localhost:3000/commit
+
+### Production
+Recommended way - `git clone` and deploy with a ci system<br />
 (such as
 <a href="https://heroku.com" target="_blank">
   <img height="30" valign="middle" src="assets/heroku-logo.svg" alt="heroku" />
