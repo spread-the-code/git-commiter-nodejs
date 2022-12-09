@@ -37,7 +37,7 @@
   "dependencies": {
     "@types/node": "~8.10.30",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "simple-git": "^1.106.0",
     "tempy": "^0.2.1",
     "tslib": "~1.9.3",
