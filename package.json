@@ -11,7 +11,7 @@
     "@types/jest": "~23.3.2",
     "@types/tempy": "^0.2.0",
     "coveralls": "^3.0.2",
-    "jest": "~23.6.0",
+    "jest": "~29.3.1",
     "nodemon": "^1.18.5",
     "prettier": "1.14.3",
     "rimraf": "~2.6.2",
